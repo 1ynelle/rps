@@ -21,7 +21,6 @@ function checkPlayerChoice(playerChoice) {
         case "paper":
         case "scissors":
             return playerChoice;
-            break;
         default:
             return false;
     }
@@ -62,14 +61,15 @@ function getFinalWinner() {
 function playRPS() {
     let rounds = 0;
     while(rounds < 5) {
-        let playerChoice = prompt("Please enter rock, paper, or scissors");
+        let initPlayerChoice = prompt("Please enter rock, paper, or scissors");
 
-        if (playerChoice === "") {
+        if (initPlayerChoice === "") {
             alert("Oops! You didn't enter anything.");
 
-        } else if (playerChoice) {
-            playerChoice = playerChoice.trim().toLowerCase();
-            playerChoice = checkPlayerChoice(playerChoice);
+        } else if (initPlayerChoice) {
+            initPlayerChoice = initPlayerChoice.trim().toLowerCase();
+            const playerChoice = checkPlayerChoice(initPlayerChoice);
+
             if (playerChoice) {
                 const computerChoice = getComputerChoice();
                 console.log(playRound(playerChoice, computerChoice));
@@ -82,7 +82,7 @@ function playRPS() {
             alert("Let's continue some other time.");
             break;
         }
-    }
+    } 
     console.log(getFinalWinner());
 }
 
