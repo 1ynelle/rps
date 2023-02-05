@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&display=swap');
+
+:root{
+    /* Colors */
+    --TEXT-COLOR: #311712;
+    --CP-TEXT-COLOR: #122941;
+    --BORDER-COLOR: #311712;
+    --BG-COLOR: #F7E4DD;
+    --CARD-BG: #FCEFDD;
+    --BTN-BG: #F9D468;
+
+    /* Effects */
+    --BORDER: 4px solid var(--BORDER-COLOR);
+}
+
+
+/* Reset ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* || GENERAL STYLES ---------- */
+body {
+    background-color: var(--BG-COLOR);
+    color: var(--TEXT-COLOR);
+    font-family: 'Fuzzy Bubbles', sans-serif;
+    font-weight: bold;
+}
+
+main {
+    margin: 0 auto;
+    max-width: 800px;
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* Desk Bg ---------- */
+.desk{
+    background-color: #EFB6AC;
+    border-top: var(--BORDER);
+    height: calc(100vh - 25.5rem);
+    position: absolute;
+    top: 25.5rem;
+    width: 100%;
+    z-index: -1;
+}
+
+.desk__acc {
+    display: none;
+}
+
+
+/* Scoreboard ---------- */
+.scoreboard__section {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.scoreboard {
+    background: var(--CARD-BG);
+    border-radius: 15px;
+    border: var(--BORDER);
+    flex: 1 1 160px;
+    max-width: 200px;
+    padding: 0.5rem;
+
+    display: flex;
+    gap: 0.5rem;
+}
+
+.scoreboard img {
+    width: 33%;
+}
+
+.scoreboard__score-container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+
+
+/* Computer ----------*/
+.cp-board {
+    /* border: 1px solid #333; */
+    color: var(--CP-TEXT-COLOR);
+    margin: 1.5rem auto;
+    max-width: 350px;
+    position: relative;
+    width: 100%;
+}
+
+.cp-board__cp-option,
+.cp-board__play-again,
+.cp-board__results,
+.cp-board__winner-img,
+.cp-board__winner-text {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cp-board__winner-text {
+    font-size: 1.2rem;
+    top: 22%;
+}
+
+.cp-board__cp-option,
+.cp-board__winner-img {
+    max-width: 70px;
+    top: 36%;
+}
+
+.cp-board__results {
+    top: 54%;
+}
+
+.cp-board__play-again {
+    background-color: var(--BTN-BG);
+    border-radius: 15px;
+    border: 3px solid var(--BORDER-COLOR);
+    color: var(--TEXT-COLOR);
+    font: inherit;
+    padding: 0.5rem 0.8rem;
+    top: 54%;
+}
+
+
+/* Player Board ----------*/
+.pl-board {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.pl-board__pl-option {
+    background-color: var(--CARD-BG);
+    border-radius: 15px;
+    border: var(--BORDER);
+    height: 125px;
+    padding: 1rem;
+    width: 125px;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem
+}
+
+.pl-board__pl-option img {
+    width: auto;
+    height: 70%;
+    transition: 0.3s ease;
+}
+
+.pl-board__pl-option img:hover {
+    transform: scale(1.1)
+}
+
+.fade {
+    opacity: 0.5;
+}
+
+
+/* || MEDIUM+ SCREENS */
+@media only screen and (min-width: 768px) {
+    .desk__acc {
+        display: block;
+        position: absolute;
+        top: -7rem;
+        transform: translateX(-50%);
+        width: 160px;
+    }
+
+    #plant {
+        left: calc(50% - 18rem);
+    }
+    
+    #pencil-cup {
+        left: calc(50% + 18rem);
+    }
+}
+
+
+

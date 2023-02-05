@@ -5,9 +5,71 @@
     <meta name="description" content="The Odin Project - Project: Rock, Paper, Scissors">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Console Rock Paper Scissors</title>
-    <script src="script.js" defer></script>
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script2.js" defer></script>
 </head>
 <body>
+    <main>
+        <!-- Scores -->
+        <section class="scoreboard__section">
+            <section id="pl-scoreboard" class="scoreboard">
+                <img src="img/player.png" alt="player icon" width="220" height="220">
+                <div class="scoreboard__score-container">
+                    <p>Player:</p>
+                    <p><span id="pl-score" class="scoreboard__score">0</span>/5</p>
+                </div>
+            </section>
+
+            <section id="cp-scoreboard" class="scoreboard">
+                <img src="img/computer.png" alt="player icon" width="220" height="220">
+                <div class="scoreboard__score-container">
+                    <p>Computer:</p>
+                    <p><span id="cp-score" class="scoreboard__score">0</span>/5</p>
+                </div>
+            </section>
+        </section>
+        
+        <!-- Monitor -->
+        <section id="cp-board" class="cp-board">
+            <img src="img/computer.png" alt="computer monitor" width="512" height="512">
+
+            <p class="cp-board__winner-text hidden">Final Winner</p>
+
+            <img src="img/player.png" alt="player" id="pl-winner-img" class="cp-board__winner-img hidden">
+            <img src="img/computer.png" alt="computer" id="cp-winner-img" class="cp-board__winner-img hidden">
+
+            <img src="img/cp-rock.png" alt="rock" id="cp-rock" class="cp-board__cp-option hidden" data-option="rock">
+            <img src="img/cp-paper.png" alt="paper" id="cp-paper" class="cp-board__cp-option hidden" data-option="paper">
+            <img src="img/cp-scissors.png" alt="scissors" id="cp-scissors" class="cp-board__cp-option hidden" data-option="scissors">
+            
+            <p class="cp-board__results">Make your move!</p>
+
+            <button type="submit" name="play-again" class="cp-board__play-again hidden">Play Again?</button>
+        </section>
+
+        <!-- Player Options -->
+        <section id="pl-board" class="pl-board">
+            <div id="pl-rock" class="pl-board__pl-option" data-option="rock">
+                <img src="img/pl-rock.png" alt="rock">
+                <p>Rock</p>
+            </div>
+
+            <div id="pl-paper" class="pl-board__pl-option" data-option="paper">
+                <img src="img/pl-paper.png" alt="paper">
+                <p>Paper</p>
+            </div>
+            
+            <div id="pl-scissors" class="pl-board__pl-option" data-option="scissors">
+                <img src="img/pl-scissors.png" alt="scissors">
+                <p>Scissors</p>
+            </div>
+        </section>
+    </main>
+
+    <div class="desk">
+        <img src="img/plant.png" alt="desk plant" id="plant" class="desk__acc">
+        <img src="img/pencil-cup.png" alt="pencil cup" id="pencil-cup" class="desk__acc">
+    </div>
 </body>
 </html>

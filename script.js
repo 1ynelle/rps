@@ -60,6 +60,7 @@ function getFinalWinner() {
 
 function playRPS() {
     let rounds = 0;
+    
     while(rounds < 5) {
         let initPlayerChoice = prompt("Please enter rock, paper, or scissors");
 
@@ -83,6 +84,7 @@ function playRPS() {
             break;
         }
     } 
+
     console.log(getFinalWinner());
 }
 
