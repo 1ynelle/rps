@@ -1,93 +1,146 @@
-/* Pseudocode
-RPS Game
-- Get player choice
-    - If player enters a choice:
-        - Check if player's choice is rps
-        - If player's choice is rps:
-            - Generate random computer choice
-            - Play a round
-            - Display results
-        - If player's choice is not rps, get player choice again
-    - If player doesn't enter a choice, get player choice again.
+let playerScore;
+let computerScore;
 
-- Play five rounds */
+// Score Section
+const domPlScore = document.querySelector('#pl-score');
+const domCpScore = document.querySelector('#cp-score');
 
-let playerScore = 0;
-let computerScore = 0;
+// Monitor
+const winnerText = document.querySelector('.cp-board__winner-text');
+const cpOptions = document.querySelectorAll('.cp-board__cp-option');
+const winnerImgs = document.querySelectorAll('.cp-board__winner-img')
+const results = document.querySelector('.cp-board__results');
+const playAgainBtn = document.querySelector('.cp-board__play-again');
 
-function checkPlayerChoice(playerChoice) {
-    switch (playerChoice) {
-        case "rock":
-        case "paper":
-        case "scissors":
-            return playerChoice;
-        default:
-            return false;
-    }
+// Player Options
+const plBoard = document.querySelector('.pl-board');
+const plOptions = document.querySelectorAll('.pl-board__pl-option');
+
+// Starting Screen
+function startGame() {
+    playerScore = 0;
+    domPlScore.innerText = playerScore;
+    computerScore = 0;
+    domCpScore.innerText = computerScore;
+
+    winnerText.classList.add('hidden');
+    winnerImgs.forEach(img => {
+        img.classList.add('hidden');
+    });
+    playAgainBtn.classList.add('hidden');
+
+    results.classList.remove('hidden');
+    plBoard.style.display = 'flex';
+
+    plOptions.forEach(option => {
+        option.addEventListener('click', playRound);
+    });
 }
 
+startGame();
+
+// Gameflow for each round
+function playRound(e) {
+    const playerChoice = e.currentTarget.getAttribute('data-option');
+    const computerChoice = getComputerChoice();
+
+    showPlayerChoice(playerChoice);
+    showComputerChoice(computerChoice);
+
+    determineWinner(playerChoice, computerChoice);
+    checkScore();
+
+    resetGameboard();
+}
+
+// Helper Functions
 function getComputerChoice() {
-    const choices = ["rock", "paper", "scissors"];
+    const options = ["rock", "paper", "scissors"];
     const index = Math.floor(Math.random() * 3);
-    return choices[index];
+    return options[index];
 }
 
-function playRound(playerChoice, computerChoice) {
+function showPlayerChoice(playerChoice) {
+    plOptions.forEach(option => {
+        option.removeEventListener('click', playRound);
+        if (option.getAttribute('data-option') === playerChoice) {
+            option.classList.remove('fade');
+        } else {
+            option.classList.add('fade');
+        }
+    });
+}
+
+function showComputerChoice(computerChoice) {
+    cpOptions.forEach(option => {
+        if (option.getAttribute('data-option') === computerChoice) {
+            option.classList.remove('hidden');
+        } else {
+            option.classList.add('hidden');
+        }
+    });
+}
+
+function determineWinner(playerChoice, computerChoice) {
     if (playerChoice === computerChoice) {
-        return `It's a tie! ( ͡° ͜ʖ ͡°)\nPlayer: ${playerScore}, Computer: ${computerScore}`;
+        results.innerText = "It's a tie! 😑";
 
     } else if (playerChoice === "rock" && computerChoice === "scissors" ||
                playerChoice === "paper" && computerChoice === "rock" ||
                playerChoice === "scissors") {
-        playerScore++;
-        return `You win! o(*^▽^*)┛ ${playerChoice.charAt(0).toUpperCase()}${playerChoice.slice(1)} beats Computer's ${computerChoice}.\nPlayer: ${playerScore}, Computer: ${computerScore}`;
+        domPlScore.innerText = ++playerScore;
+        results.innerText = "Player wins! 😊";
 
     } else {
-        computerScore++;
-        return `You lose! (╬▔皿▔)╯ Computer's ${computerChoice} beats ${playerChoice}.\nPlayer: ${playerScore}, Computer: ${computerScore}`;
+        domCpScore.innerText = ++computerScore;
+        results.innerText = "Computer wins! 🥲";
     }
 }
 
-function getFinalWinner() {
-    const result = playerScore === computerScore
-    ? `Tie Game (*^-^*)\nPlayer: ${playerScore}, Computer: ${computerScore}`
-    : playerScore > computerScore
-    ? `Player wins!╰(*°▽°*)╯\nPlayer: ${playerScore}, Computer: ${computerScore}`
-    : `Computer wins! ╰(艹皿艹 )\nPlayer: ${playerScore}, Computer: ${computerScore}`;
-
-    return result;
+function checkScore() {
+    if (playerScore === 5) {
+        showFinalWinner("player");
+    } else if (computerScore === 5) {
+        showFinalWinner("computer");
+    }
 }
 
-function playRPS() {
-    let rounds = 0;
-    
-    while(rounds < 5) {
-        let initPlayerChoice = prompt("Please enter rock, paper, or scissors");
+function resetGameboard() {
+    setTimeout(() => {
+        results.innerText = "Make your move!";
 
-        if (initPlayerChoice === "") {
-            alert("Oops! You didn't enter anything.");
+        plOptions.forEach(option => {
+            option.classList.remove('fade');
+            option.addEventListener('click', playRound);
+        });
 
-        } else if (initPlayerChoice) {
-            initPlayerChoice = initPlayerChoice.trim().toLowerCase();
-            const playerChoice = checkPlayerChoice(initPlayerChoice);
-
-            if (playerChoice) {
-                const computerChoice = getComputerChoice();
-                console.log(playRound(playerChoice, computerChoice));
-                rounds++;
-            } else {
-                alert("You didn't enter rock, paper, or scissors!");
-            }
-
-        } else {
-            alert("Let's continue some other time.");
-            break;
-        }
-    } 
-
-    console.log(getFinalWinner());
+        cpOptions.forEach(option => {
+            option.classList.add('hidden');
+        });
+    }, 1300);
 }
 
-const startGame = confirm("Want to play five rounds of rock, paper, scissors?")
-? playRPS()
-: alert("Ok, maybe next time");
+function showFinalWinner(winner) {
+    winnerText.classList.remove('hidden');
+
+    cpOptions.forEach(option => {
+        option.classList.add('hidden');
+    });
+
+    const playerImage = document.querySelector('#pl-winner-img');
+    const computerImage = document.querySelector('#cp-winner-img');
+    if (winner === "player") {
+        playerImage.classList.remove('hidden');
+    } else if (winner === "computer") {
+        computerImage.classList.remove('hidden');
+    }
+
+    results.classList.add('hidden');
+
+    playAgainBtn.classList.remove('hidden');
+    playAgainBtn.addEventListener('click', e => {
+        startGame();
+    });
+   
+    plBoard.style.display = 'none';
+}
