@@ -3,11 +3,13 @@
 :root{
     /* Colors */
     --TEXT-COLOR: #311712;
-    --CP-TEXT-COLOR: #122941;
+    --CP-COLOR: #122941;
+    --FTR-COLOR: #A66D63;
     --BORDER-COLOR: #311712;
     --BG-COLOR: #F7E4DD;
-    --CARD-BG: #FCEFDD;
-    --BTN-BG: #F9D468;
+    --BG-DESK: #EFB6AC;
+    --BG-CARD: #FCEFDD;
+    --BG-BTN: #F9D468;
 
     /* Effects */
     --BORDER: 4px solid var(--BORDER-COLOR);
@@ -34,6 +36,7 @@ body {
     color: var(--TEXT-COLOR);
     font-family: 'Fuzzy Bubbles', sans-serif;
     font-weight: bold;
+    min-height: 100vh;
 }
 
 main {
@@ -53,7 +56,7 @@ main {
 }
 
 .scoreboard__scorecard {
-    background: var(--CARD-BG);
+    background: var(--BG-CARD);
     border-radius: 15px;
     border: var(--BORDER);
     flex: 1 1 160px;
@@ -77,8 +80,7 @@ main {
 
 /* Monitor ----------*/
 .cp-board {
-    /* border: 1px solid #333; */
-    color: var(--CP-TEXT-COLOR);
+    color: var(--CP-COLOR);
     margin: 1.5rem auto;
     max-width: 350px;
     position: relative;
@@ -111,7 +113,7 @@ main {
 }
 
 .cp-board__play-again {
-    background-color: var(--BTN-BG);
+    background-color: var(--BG-BTN);
     border-radius: 15px;
     border: 3px solid var(--BORDER-COLOR);
     color: var(--TEXT-COLOR);
@@ -121,7 +123,7 @@ main {
     transition: 0.2s ease;
 }
 
-.cp-board__play-again:hover {
+.cp-board__play-again:where(:hover, :focus) {
     filter: brightness(1.1);
 }
 
@@ -135,7 +137,7 @@ main {
 }
 
 .pl-board__pl-option {
-    background-color: var(--CARD-BG);
+    background-color: var(--BG-CARD);
     border-radius: 15px;
     border: var(--BORDER);
     height: 125px;
@@ -162,9 +164,9 @@ main {
 
 /* Desk Bg ---------- */
 .desk{
-    background-color: #EFB6AC;
+    background-color: var(--BG-DESK);
     border-top: var(--BORDER);
-    height: calc(100vh - 25.5rem);
+    height: calc(100% - 25.5rem);
     position: absolute;
     top: 25.5rem;
     width: 100%;
@@ -183,6 +185,27 @@ main {
 
 .fade {
     opacity: 0.5;
+}
+
+
+/* Footer ---------- */
+footer {
+    bottom: 0;
+    background-color: var(--BG-DESK);
+    color: var(--FTR-COLOR);
+    padding: 0.5rem;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+}
+
+footer a {
+    color: var(--FTR-COLOR);
+    text-decoration: none;
+}
+
+footer a:where(:hover, :focus) {
+    text-decoration: underline;
 }
 
 

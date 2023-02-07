@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/169bff8958.js" crossorigin="anonymous"></script>
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -36,15 +37,10 @@
 
             <p class="cp-board__winner-text hidden">Final Winner:</p>
 
-            <img src="img/player.png" alt="player" id="pl-winner-img" class="cp-board__winner-img hidden">
-            <img src="img/computer.png" alt="computer" id="cp-winner-img" class="cp-board__winner-img hidden">
-
-            <img src="img/cp-rock.png" alt="rock" class="cp-board__cp-option hidden" data-option="rock">
-            <img src="img/cp-paper.png" alt="paper" class="cp-board__cp-option hidden" data-option="paper">
-            <img src="img/cp-scissors.png" alt="scissors" class="cp-board__cp-option hidden" data-option="scissors">
+            <img class="cp-board__winner-img">
+            <img class="cp-board__cp-option">
             
             <p class="cp-board__results">Make your move!</p>
-
             <button type="submit" name="play-again" class="cp-board__play-again hidden">Play Again?</button>
         </section>
 
@@ -72,5 +68,9 @@
         <img src="img/plant.png" alt="desk plant" id="plant" class="desk__acc">
         <img src="img/pencil-cup.png" alt="pencil cup" id="pencil-cup" class="desk__acc">
     </div>
+
+    <footer>
+        <p>Copyright &copy; <a href="https://github.com/1ynelle">Lynelle <script>document.write(new Date().getFullYear());</script> <i class="fa-brands fa-github"></i></a></p>
+    </footer>
 </body>
 </html>
