@@ -37,7 +37,7 @@ startGame();
 
 // Gameflow for each round
 function playRound() {
-    const playerChoice = this.getAttribute('data-option');
+    const playerChoice = this.dataset['option'];
     const computerChoice = getComputerChoice();
 
     showPlayerChoice(playerChoice);
@@ -66,7 +66,7 @@ function getComputerChoice() {
 function showPlayerChoice(playerChoice) {
     plOptions.forEach(option => {
         option.removeEventListener('click', playRound);
-        if (option.getAttribute('data-option') === playerChoice) {
+        if (option.dataset['option'] === playerChoice) {
             option.classList.remove('fade');
         } else {
             option.classList.add('fade');
