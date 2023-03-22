@@ -1,9 +1,13 @@
-# Rock, Paper, Scissors
+## 🪨 Rock, Paper, Scissors | The Odin Project
 
-##### 2/3/2023 - Console RPS
+Submission for [TOP's Rock, Paper, Scissors Project](https://www.theodinproject.com/lessons/foundations-rock-paper-scissors)
 
-Submission for [TOP - Project: Rock, Paper, Scissors](https://www.theodinproject.com/lessons/foundations-rock-paper-scissors). Tried applying different types of conditionals (if/else, switch, ternary operators). Took some time to figure out how to prompt for player input again if they didn't enter rock, paper, or scissors.
+**[🔗 Live Preview](https://1ynelle.github.io/rps)**
 
-##### 2/5/2023 - Added JS Interactivity
+#### Learned:
 
-Took a while to figure out the logic for a seemingly simple game. Code works, but is cluttered with if/else statements, forEach, and adding a 'hidden' class. Learned the power of pseudocode in helping to figure out what functions to create / call. Will now check out a tutorial and other people's code.
+- Conditionals (if/else, switch, ternary)
+- Breaking things down with pseudocode and functions (took a while to figure out the logic for a seemingly simple game 🥹)
+- CSS positioning
+
+Vanilla JS, HTML/CSS
