@@ -4,6 +4,8 @@ Submission for [TOP's Rock, Paper, Scissors Project](https://www.theodinproject.
 
 **[🔗 Live Preview](https://1ynelle.github.io/rps)**
 
+<img src="/img/rock-paper-scissors_top.png" alt="Library Site Image Preview" width="600">
+
 #### Learned:
 
 - Conditionals (if/else, switch, ternary)
